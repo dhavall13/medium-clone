@@ -1,2 +1,4 @@
 - Start app with hono
+-  setup database urls for cloudfare and postgres-prisma
+-  write schema for application
 - 
