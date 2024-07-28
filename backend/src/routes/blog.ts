@@ -18,14 +18,16 @@ blogRouter.use("/*", async (c, next) => {
   //   c.status(401);
   //   return c.json({ error: "Unauthorized" });
   // }
-  const user = await verify(authHeader, c.env.JWT_SECRET);
-  if (user) {
-    // @ts-ignore
-    c.set("userId", user.id);
-    await next();
-  } else {
+  try {
+    const user = await verify(authHeader, c.env.JWT_SECRET);
+    if (user) {
+      // @ts-ignore
+      c.set("userId", user.id);
+      await next();
+    }
+  } catch (e) {
     c.status(403);
-    return c.json({ error: "Unauthorized" });
+    return c.json({ error: "you are not logged in" });
   }
 });
 
