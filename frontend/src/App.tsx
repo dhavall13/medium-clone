@@ -1,11 +1,20 @@
-const App = () => {
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { Signup } from "./pages/Signup";
+import { Signin } from "./pages/Signin";
+import { Blog } from "./pages/Blog";
+
+function App() {
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-100">
-      <h1 className="text-4xl font-bold text-blue-500">
-        Hello, Tailwind CSS with Vite!
-      </h1>
-    </div>
+    <>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/signin" element={<Signin />} />
+          <Route path="/blog/:id" element={<Blog />} />
+        </Routes>
+      </BrowserRouter>
+    </>
   );
-};
+}
 
 export default App;
